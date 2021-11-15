@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Post
+from . import serializer
+from rest_framework import viewsets
 
-def home(request):
-    return HttpResponse('<h1>Blog Home</h1>')
+class PostsViewSet(viewsets.ModelViewSet):
+    # TODO: Aqui seria uma paginação talvez.
+    queryset = Post.objects.all()    
+    serializer_class = serializer.PostSerializer

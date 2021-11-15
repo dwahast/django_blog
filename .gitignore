@@ -1,6 +1,6 @@
 #custom
 django_project/frontend/node_modules
-
+django_project/media
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
