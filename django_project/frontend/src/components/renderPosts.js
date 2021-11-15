@@ -22,8 +22,8 @@ const RenderCardPosts = (props) => {
                         </footer>
                         </blockquote>
                     </Card.Body>
-                    {image === "" ? 
-                        (<Card.Img variant="top" src="https://www.w3schools.com/w3images/lights.jpg" />)
+                    {image !== "" ? 
+                        (<Card.Img variant="top" src={image} />)
                     :
                         <></>}
                 </Card>
