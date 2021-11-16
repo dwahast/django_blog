@@ -3,21 +3,15 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import RenderCardPosts from "./renderPosts"
 
-let baseEndpoint = "http://127.0.0.1:8000/blog";
-
-if (process.env.ALLOWED_HOSTS !== undefined && process.env.ALLOWED_HOSTS.length !== 0) {
-    baseEndpoint = process.env.ALLOWED_HOSTS + "/blog";
-}
-
-console.log("API URL: " + baseEndpoint);
 
 async function getBlogPosts(){
-    console.log("Trying to get posts");
+    let base = (process.env.ALLOWED_HOSTS === undefined ? "" : process.env.ALLOWED_HOSTS)
+    console.log("Trying to get posts in " + base);
     let posts = [];
     try {
         const response = await axios({
             method: 'GET',
-            url: baseEndpoint,
+            url: base + "/blog",
         });
         console.log("Response GET Posts:" + JSON.stringify(response.data));
         return response;
