@@ -8,10 +8,10 @@ const options = { year: 'numeric', month: 'long', day: 'numeric', time: 'numeric
 const RenderCardPosts = (props) => {
     console.log("Render props.posts:" + JSON.stringify(props.posts));
     console.log("Qtd posts: "+ props.posts.length);
-    if (props.posts === null || props.posts.length === 0 || props.posts.length === undefined) {
+    if (props.posts === null || props.posts.length === 0 || props.posts === undefined) {
         return (
             <Container className="container pt-3" key={uuidv4()}>
-                <Card border="warning">
+                <Card border="warning" className="mt-5 shadow-sm bg-white rounded">
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
                         <p>

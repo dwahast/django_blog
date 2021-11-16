@@ -3,12 +3,13 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import RenderCardPosts from "./renderPosts"
 
-if (process.env.ALLOWED_HOSTS.length === 0) {
-    const URL = "http://127.0.0.1:8000" + "/blog";
-} else {
-    const URL = process.env.ALLOWED_HOSTS + "/blog";
+let baseEndpoint = "http://127.0.0.1:8000/blog";
+
+if (process.env.ALLOWED_HOSTS !== undefined && process.env.ALLOWED_HOSTS.length !== 0) {
+    baseEndpoint = process.env.ALLOWED_HOSTS + "/blog";
 }
 
+console.log("API URL: " + baseEndpoint);
 
 async function getBlogPosts(){
     console.log("Trying to get posts");
@@ -16,7 +17,7 @@ async function getBlogPosts(){
     try {
         const response = await axios({
             method: 'GET',
-            url: URL,
+            url: baseEndpoint,
         });
         console.log("Response GET Posts:" + JSON.stringify(response.data));
         return response;
@@ -27,17 +28,22 @@ async function getBlogPosts(){
 };
 
 export default function BlogBody(props) {    
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
     
     useEffect(() => {
-        getBlogPosts().then(response => {
-            if ( response.status === 200 ){
-                setPosts(response.data)
-            } else {
-                console.error(JSON.stringify(response))
-                setPosts([])
-            }
-        })
+        try {
+            getBlogPosts().then(response => {
+                if ( response.status === 200 ){
+                    setPosts(response.data);
+                } else {
+                    console.error(JSON.stringify(response));
+                    setPosts([]);
+                }
+            })
+        } catch (error) {
+            console.error(error);
+            setPosts([]);
+        }
     }, [])
 
     return (
