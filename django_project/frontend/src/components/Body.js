@@ -1,14 +1,44 @@
-import React, { Component, useState, useEffect } from "react";
-import Container from 'react-bootstrap/Container'
+import axios from 'axios';
+
+import React, { useState, useEffect } from "react";
 import RenderCardPosts from "./renderPosts"
 
+const URL = "http://127.0.0.1:8000/blog";
+
+async function getBlogPosts(){
+    console.log("Trying to get posts");
+    let posts = [];
+    try {
+        const response = await axios({
+            method: 'GET',
+            url: URL,
+        });
+        console.log("Response GET Posts:" + JSON.stringify(response.data));
+        return response;
+    } catch(error) {
+        console.log(error);
+        console.error("Error getting posts..." + JSON.stringify(error));
+    }
+};
+
 export default function BlogBody(props) {    
+    const [posts, setPosts] = useState([])
+    
+    useEffect(() => {
+        getBlogPosts().then(response => {
+            if ( response.status === 200 ){
+                setPosts(response.data)
+            } else {
+                console.error(JSON.stringify(response))
+                setPosts([])
+            }
+        })
+    }, [])
+
     return (
         <div className="scrollbar scrollbar-black bordered-black square">
             <div className="force-overflow">  
-                
-                <RenderCardPosts posts={[{name: "zeca", text: "Meu texto", image:"https://www.w3schools.com/w3images/lights.jpg", citie: "Pelotas"}, {name: "pagodinho", text: "Meu outro texto", image:"", citie: "Porto Alegre"}]}/>
-               
+                <RenderCardPosts posts={posts}/>
             </div>
         </div>
         
