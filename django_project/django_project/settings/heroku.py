@@ -1,6 +1,6 @@
 import environ
 
-from django_project.settings.base import *
+from .base import *
 
 env = environ.Env()
 
