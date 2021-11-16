@@ -1,36 +1,34 @@
-# django_blog with react
+# Django Blog with React (Heroku Cloud)
+    Para adicionar novo post é necessário fazer o login na página [URL]/admin (antes é necessário configurar um usário)
 
-python manage.py runserver
+    Após o login é necessário acessar a aba "Posts" e clicar em "Add Post"
+    Após isso preencher os dados conforme requisitado para criação do Post.
 
-npm run dev
+## Configurações de imaplantação
+### Para iniciar o servidor Django
+    python manage.py runserver
 
-npm run build
+### Para buildar o front
+    npm run dev
 
-```
-douglas@pop-os:~/Documents/django_blog$ heroku create
-Creating app... done, ⬢ intense-everglades-64647
-https://intense-everglades-64647.herokuapp.com/ | https://git.heroku.com/intense-everglades-64647.git
-```
+### Instanciação no Heroku (Parametrizar de acordo com o retorno do Heroku Create)
+    heroku login
+    
+    heroku create
+        Creating app... done, ⬢ intense-everglades-64647
+        https://intense-everglades-64647.herokuapp.com/ | https://git.heroku.com/intense-everglades-64647.git
 
-```
-heroku config:set SECRET_KEY=123adminherokuapp --app=intense-everglades-64647
-```
+    heroku config:set SECRET_KEY=123adminherokuapp --app=intense-everglades-64647
+    heroku config:set DEBUG=False --app=intense-everglades-64647
+    heroku config:set ALLOWED_HOSTS=intense-everglades-64647.herokuapp.com --app=intense-everglades-64647
+    heroku config:set DJANGO_SETTINGS_MODULE=django_project.settings.heroku --app=intense-everglades-64647
+    
+    heroku addons:create heroku-postgresql:hobby-dev --app=intense-everglades-64647
 
-```
-douglas@pop-os:~/Documents/django_blog$ heroku config:set DEBUG=False --app=intense-everglades-64647
-Setting DEBUG and restarting ⬢ intense-everglades-64647... done, v6
-DEBUG: False
-douglas@pop-os:~/Documents/django_blog$ heroku addons
- ▸    Couldn't find that app.
-douglas@pop-os:~/Documents/django_blog$ heroku addons --app=intense-everglades-64647No add-ons for app intense-everglades-64647.
-```
-```
-No add-ons for app intense-everglades-64647.
-douglas@pop-os:~/Documents/django_blog$ heroku addons:create heroku-postgresql:hobby-dev --app=intense-everglades-64647
-Creating heroku-postgresql:hobby-dev on ⬢ intense-everglades-64647... free
-Database has been created and is available
- ! This database is empty. If upgrading, you can transfer
- ! data from another database with pg:copy
-Created postgresql-opaque-58679 as DATABASE_URL
-Use heroku addons:docs heroku-postgresql to view documentation
-```
+    heroku git:remote -a staging-app
+    git push heroku main
+
+    heroku run bash
+    python3 manage.py createsuperuser
+
+
