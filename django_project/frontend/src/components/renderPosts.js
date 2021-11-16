@@ -11,7 +11,7 @@ const RenderCardPosts = (props) => {
     if (props.posts === null || props.posts.length === 0 || props.posts.length === undefined) {
         return (
             <Container className="container pt-3" key={uuidv4()}>
-                <Card>
+                <Card border="warning">
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
                         <p>
@@ -33,9 +33,9 @@ const RenderCardPosts = (props) => {
             
 
             return (
-                <Container className="container pt-3" key={id}>
-                    <Card>
-                        <Card.Header>{author}</Card.Header>
+                <Container className="container" key={id}>
+                    <Card border="secondary" className="mt-5 shadow-sm bg-white rounded">
+                        <Card.Header><cite title="Source Title">{author}</cite></Card.Header>
                         <Card.Body>
                             <blockquote className="blockquote mb-0">
                             <h2>{title}</h2>

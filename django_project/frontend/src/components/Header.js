@@ -7,7 +7,7 @@ const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric
 export default function BlogHeader(props) {    
     return (
         <Navbar>
-            <Container>
+            <Container className="fixed-top bg-white rounded p-2">
                 <Navbar.Brand href="/">Tech Blog</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
