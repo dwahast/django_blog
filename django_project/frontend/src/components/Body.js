@@ -3,7 +3,12 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import RenderCardPosts from "./renderPosts"
 
-const URL = "http://127.0.0.1:8000/blog";
+if (process.env.ALLOWED_HOSTS.length === 0) {
+    const URL = "http://127.0.0.1:8000" + "/blog";
+} else {
+    const URL = process.env.ALLOWED_HOSTS + "/blog";
+}
+
 
 async function getBlogPosts(){
     console.log("Trying to get posts");
