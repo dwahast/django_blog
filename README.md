@@ -25,7 +25,7 @@
 
     heroku config:set AWS_ACCESS_KEY_ID=? --app=intense-everglades-64647
     heroku config:set AWS_SECRET_ACCESS_KEY=? --app=intense-everglades-64647
-    heroku config:set AWS_STORE_BUCKET_NAME=django-blog-with-react-images --app=intense-everglades-64647
+    heroku config:set AWS_STORE_BUCKET_NAME="django-blog-with-react-images" --app=intense-everglades-64647
     heroku config:set AWS_S3_FILE_OVERWRITE=False --app=intense-everglades-64647
 
     heroku addons:create heroku-postgresql:hobby-dev --app=intense-everglades-64647
