@@ -2,7 +2,7 @@
     Para adicionar novo post é necessário fazer o login na página [URL]/admin (antes é necessário configurar um usário)
 
     Após o login é necessário acessar a aba "Posts" e clicar em "Add Post"
-    Após isso preencher os dados conforme requisitado para criação do Post.
+    Após isso preencher os dados conforme requisitado para criação do post.
 
 ## Configurações de imaplantação
 ### Para iniciar o servidor Django

@@ -28,7 +28,7 @@ export default function BlogBody(props) {
         try {
             getBlogPosts().then(response => {
                 if ( response.status === 200 ){
-                    setPosts(response.data);
+                    setPosts(response.data.reverse());
                 } else {
                     console.error(JSON.stringify(response));
                     setPosts([]);

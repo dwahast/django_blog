@@ -12,6 +12,7 @@ whitenoise = "*"
 gunicorn = "*"
 psycopg2 = "*"
 pillow = "*"
+django-storages = "*"
 
 [dev-packages]
 
