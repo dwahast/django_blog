@@ -21,7 +21,7 @@ async function getBlogPosts(){
     }
 };
 
-export default function BlogBody(props) {    
+export default function BlogBody() {    
     const [posts, setPosts] = useState([]);
     
     useEffect(() => {
@@ -44,8 +44,8 @@ export default function BlogBody(props) {
 
     return (
         <div className="scrollbar scrollbar-black bordered-black square">
-            <div className="force-overflow mt-4">  
-                <RenderCardPosts className="mt-4" posts={posts}/>
+            <div className="force-overflow" style={{"margin-top": "5rem"}}>  
+                <RenderCardPosts className="mt-5"  posts={posts}/>
             </div>
         </div>
         

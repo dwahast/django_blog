@@ -1,10 +1,15 @@
 # Django Blog with React (Heroku Cloud)
+
+## Resumo
+    Este projeto tem o intuito de utilizar do framework Django como servidor backend, e de React com node para o Front. Onde o projeto é gerenciado pelo framework django, assim todo processo de deploy e inserção de dados é feito por ele.
+
+## Criando um post
     Para adicionar novo post é necessário fazer o login na página [URL]/admin (antes é necessário configurar um usário)
 
     Após o login é necessário acessar a aba "Posts" e clicar em "Add Post"
     Após isso preencher os dados conforme requisitado para criação do post.
 
-## Configurações de imaplantação
+## Configurações de implantação
 ### Para iniciar o servidor Django
     python manage.py runserver
 
