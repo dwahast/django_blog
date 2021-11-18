@@ -6,12 +6,10 @@ const RenderCardPosts = (props) => {
     // console.log("Render props.posts:" + JSON.stringify(props.posts));
     console.log("Qtd posts: "+ props.posts.length);
     if (props.posts === null || props.posts.length === 0 || props.posts === undefined) {
-        console.log("NoPost")
         return (
             <RenderNoPost/>
         )
     } else {
-        console.log("Post")
         return props.posts.map((post) => {
             return (
                 <RenderPost post={post} key={uuidv4()}/>

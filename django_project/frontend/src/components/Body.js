@@ -44,7 +44,7 @@ export default function BlogBody() {
 
     return (
         <div className="scrollbar scrollbar-black bordered-black square">
-            <div className="force-overflow" style={{"margin-top": "5rem"}}>  
+            <div className="force-overflow" style={{marginTop: "5rem"}}>  
                 <RenderCardPosts className="mt-5"  posts={posts}/>
             </div>
         </div>

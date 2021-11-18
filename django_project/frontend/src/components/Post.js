@@ -34,7 +34,7 @@ const RenderPost = (props) => {
     return (
         <Container className="container" key={uuidv4()}>
             <Card border="secondary" className="mt-5 shadow-sm bg-white rounded">
-                <Card.Header><cite title="Source Title">{title}</cite></Card.Header>
+                <Card.Header><cite title="Source Title">{timeStr}, {dateStr}</cite></Card.Header>
                 <Card.Body>
                     <blockquote className="blockquote mb-0">
                     {markdown ? 
@@ -48,8 +48,8 @@ const RenderPost = (props) => {
                     :
                         <></>
                     }
-                    <footer className="blockquote-footer m-4">
-                        {author},  {address} <cite title="Source Title">{timeStr}, {dateStr}</cite> - 
+                    <footer className="blockquote-footer m-4 ">
+                        <cite className="justify-content-end" title="Source Title">{author} em {address}</cite>
                     </footer>
                     </blockquote>
                 </Card.Body>
