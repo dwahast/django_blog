@@ -42,8 +42,8 @@ export default function BlogBody(props) {
 
     return (
         <div className="scrollbar scrollbar-black bordered-black square">
-            <div className="force-overflow">  
-                <RenderCardPosts posts={posts}/>
+            <div className="force-overflow mt-4">  
+                <RenderCardPosts className="mt-4" posts={posts}/>
             </div>
         </div>
         

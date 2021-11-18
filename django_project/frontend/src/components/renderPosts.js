@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 import { v4 as uuidv4 } from 'uuid';
@@ -10,8 +10,8 @@ const RenderCardPosts = (props) => {
     console.log("Qtd posts: "+ props.posts.length);
     if (props.posts === null || props.posts.length === 0 || props.posts === undefined) {
         return (
-            <Container className="container pt-3" key={uuidv4()}>
-                <Card border="warning" className="mt-5 shadow-sm bg-white rounded">
+            <Container className="container pt-3 mt-4" key={uuidv4()}>
+                <Card border="warning" className="shadow-sm bg-white rounded">
                     <Card.Body>
                         <blockquote className="blockquote mb-0">
                         <p>
@@ -28,30 +28,30 @@ const RenderCardPosts = (props) => {
         )
     } else {
         return props.posts.map((post) => {
-            const {id, title, content, image, date, address, author} = post;
+            const {id, title, content, content_html, markdown, image, date, address, author} = post;
             let dateObj = new Date(date);
-            
 
             return (
                 <Container className="container" key={id}>
                     <Card border="secondary" className="mt-5 shadow-sm bg-white rounded">
-                        <Card.Header><cite title="Source Title">{author}</cite></Card.Header>
+                        <Card.Header><cite title="Source Title">{title}</cite></Card.Header>
                         <Card.Body>
                             <blockquote className="blockquote mb-0">
-                            <h2>{title}</h2>
-                            <p>
-                                {' '}
-                                {content}{' '}
-                            </p>
-                            <footer className="blockquote-footer">
-                                <cite title="Source Title">{dateObj.toLocaleTimeString('pt-BR')}, {dateObj.toLocaleDateString('pt-BR', options)}</cite>
+                            {markdown ? 
+                                <div className=".img-wrap" dangerouslySetInnerHTML={{ __html: content_html}} /> : 
+                                content
+                             }
+
+                            {image !== "" ? 
+                            (<Card.Img className="hover-overlay" style={{ maxWidth: '48p' }} src={image} />)
+                                :
+                            <></>}
+                            <footer className="blockquote-footer m-4">
+                                {author},  <cite title="Source Title">{dateObj.toLocaleTimeString('pt-BR')}, {dateObj.toLocaleDateString('pt-BR', options)}</cite>
                             </footer>
                             </blockquote>
                         </Card.Body>
-                        {image !== "" ? 
-                            (<Card.Img variant="top" src={image} />)
-                        :
-                            <></>}
+                        
                     </Card>
                 </Container>
             )
